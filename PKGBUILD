@@ -1,30 +1,35 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Daniel Bershatsky <archlinux-ai@daskol.xyz>
 
-pkgname=python-diffusers
-pkgver=0.11.1
+pkgname='python-diffusers'
+_pkgname=${pkgname#python-}
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='Pretrained diffusion models'
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/huggingface/diffusers'
-license=('Apache License 2.0')
-source=("$pkgname-$pkgver::https://github.com/huggingface/diffusers/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('8b5450a2a902625ff890b3d2a3756ecd961e58010bbfd4f8adc406c51c35596e324d120df257287cf9339938786a0ade2d405f4541e6a19c66beb5a4d36adcd7')
+license=('Apache')
 depends=(
-    'python-pillow'
-    'python-requests'
-    'python-regex'
-    'python-numpy'
-    'python-huggingface-hub'
     'python-filelock'
+    'python-huggingface-hub'
     'python-importlib-metadata'
+    'python-numpy'
+    'python-pillow'
+    'python-regex'
+    'python-requests'
 )
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver::https://github.com/huggingface/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ad2f45f25695afa75ce63735594f42b120f8218e53989b4a3e0c6bec37f10e27')
 
 build() {
-    cd diffusers-$pkgver
-    python setup.py build
+    cd $_pkgname-$pkgver
+    python -m build -nw
 }
 
 package() {
-    cd diffusers-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer \
+        --compile-bytecode 1 \
+        --destdir $pkgdir \
+        $_pkgname-$pkgver/dist/$_pkgname-$pkgver-*-*.whl
 }
