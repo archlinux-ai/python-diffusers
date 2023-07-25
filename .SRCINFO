@@ -1,9 +1,9 @@
 pkgbase = python-diffusers
-	pkgdesc = Pretrained diffusion models
-	pkgver = 0.17.1
+	pkgdesc = State-of-the-art diffusion models for image and audio generation in PyTorch
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/huggingface/diffusers
-	arch = x86_64
+	arch = any
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
@@ -16,7 +16,8 @@ pkgbase = python-diffusers
 	depends = python-pillow
 	depends = python-regex
 	depends = python-requests
-	source = python-diffusers-0.17.1::https://github.com/huggingface/diffusers/archive/refs/tags/v0.17.1.tar.gz
-	sha256sums = ad2f45f25695afa75ce63735594f42b120f8218e53989b4a3e0c6bec37f10e27
+	depends = python-safetensors
+	source = python-diffusers-0.18.2::https://github.com/huggingface/diffusers/archive/refs/tags/v0.18.2.tar.gz
+	sha256sums = 3cc22a803d21af8beca698d76fda80ede6230b90953f9e9ece311d9cee2a3cd9
 
 pkgname = python-diffusers

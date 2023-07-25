@@ -3,10 +3,10 @@
 
 pkgname='python-diffusers'
 _pkgname=${pkgname#python-}
-pkgver=0.17.1
+pkgver=0.18.2
 pkgrel=1
-pkgdesc='Pretrained diffusion models'
-arch=('x86_64')
+pkgdesc='State-of-the-art diffusion models for image and audio generation in PyTorch'
+arch=('any')
 url='https://github.com/huggingface/diffusers'
 license=('Apache')
 depends=(
@@ -17,14 +17,14 @@ depends=(
     'python-pillow'
     'python-regex'
     'python-requests'
+    'python-safetensors'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver::https://github.com/huggingface/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ad2f45f25695afa75ce63735594f42b120f8218e53989b4a3e0c6bec37f10e27')
+sha256sums=('3cc22a803d21af8beca698d76fda80ede6230b90953f9e9ece311d9cee2a3cd9')
 
 build() {
-    cd $_pkgname-$pkgver
-    python -m build -nw
+    python -m build -nw $_pkgname-$pkgver
 }
 
 package() {
