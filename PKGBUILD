@@ -3,7 +3,7 @@
 
 pkgname='python-diffusers'
 _pkgname=${pkgname#python-}
-pkgver=0.18.2
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='State-of-the-art diffusion models for image and audio generation in PyTorch'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver::https://github.com/huggingface/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3cc22a803d21af8beca698d76fda80ede6230b90953f9e9ece311d9cee2a3cd9')
+sha256sums=('c504d7d85435194b1e5115a1462b56b97c8d85b9b3473dec3a0e99c3b03e70df')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
